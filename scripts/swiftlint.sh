@@ -1,6 +1,11 @@
 #!/bin/sh
 set -eu
 
+if [ ! -z ${CARTHAGE+x} ]; then
+    echo "Skipping swiftlint during Carthage build"
+    exit 0
+fi
+
 # Set default swiftlint command and config file
 BINARYFILE=swiftlint
 CONFIGFILE="${SRCROOT}/Configuration/swiftlint.yml"
